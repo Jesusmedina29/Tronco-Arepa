@@ -3,7 +3,8 @@ services:
     name: tronco-arepa-backend
     runtime: docker
     plan: free
-    dockerfilePath: ./Dockerfile
+    dockerfilePath: ./tronco-arepa-backend/Dockerfile
+    dockerContext: ./tronco-arepa-backend
     envVars:
       - key: SPRING_DATASOURCE_URL
         sync: false
