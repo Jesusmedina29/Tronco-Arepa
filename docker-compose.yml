@@ -31,9 +31,9 @@ services:
       SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/proyecto?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
       SPRING_DATASOURCE_USERNAME: troncoarepa
       SPRING_DATASOURCE_PASSWORD: troncoarepa
-      PORT: 8081
+      PORT: 10000
     ports:
-      - "8081:8081"
+      - "8081:10000"
 
   frontend:
     build:
