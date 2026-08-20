@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Administrador | TRONCO E AREPA
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="css/admin.css">
+
+</head>
+
+
+<body class="admin-body">
+
+
+    <!-- =========================================
+         NAVBAR
+    ========================================== -->
+
+    <header class="admin-navbar">
+
+        <div class="admin-logo-header">
+
+            <span class="logo-icon">
+                🍔
+            </span>
+
+            <span>
+                TRONCO
+            </span>
+
+            <strong>
+                E AREPA
+            </strong>
+
+        </div>
+
+
+        <div class="admin-user">
+
+            <span>
+                👤
+            </span>
+
+            <span id="nombre-admin">
+                Administrador
+            </span>
+
+            <button
+                onclick="cerrarSesionAdmin()">
+
+                🚪 Salir
+
+            </button>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =========================================
+         CONTENEDOR
+    ========================================== -->
+
+    <div class="admin-container">
+
+
+        <!-- =====================================
+             SIDEBAR
+        ====================================== -->
+
+        <aside class="admin-sidebar">
+
+            <h3>
+                ADMINISTRACIÓN
+            </h3>
+
+
+            <button
+                class="menu-admin activo"
+                onclick="mostrarModulo('inicio', this)">
+
+                🏠 Inicio
+
+            </button>
+
+
+            <button
+                class="menu-admin"
+                onclick="mostrarModulo('productos', this)">
+
+                📦 Productos
+
+            </button>
+
+
+            <button
+                class="menu-admin"
+                onclick="mostrarModulo('pedidos', this)">
+
+                🛒 Pedidos
+
+            </button>
+
+
+            <button
+                class="menu-admin"
+                onclick="mostrarModulo('clientes', this)">
+
+                👥 Clientes
+
+            </button>
+
+
+            <button
+                class="menu-admin"
+                onclick="mostrarModulo('domiciliarios', this)">
+
+                🛵 Domiciliarios
+
+            </button>
+
+
+            <button
+                class="menu-admin"
+                onclick="mostrarModulo('inventario', this)">
+
+                📊 Inventario
+
+            </button>
+
+
+            <button
+                class="menu-admin"
+                onclick="mostrarModulo('proveedores', this)">
+
+                🚚 Proveedores
+
+            </button>
+
+
+            <button
+                class="menu-admin"
+                onclick="mostrarModulo('compras', this)">
+
+                🛍️ Compras
+
+            </button>
+
+        </aside>
+
+
+
+        <!-- =====================================
+             CONTENIDO
+        ====================================== -->
+
+        <main class="admin-content">
+
+
+            <!-- =================================
+                 INICIO
+            ================================== -->
+
+            <section
+                id="modulo-inicio"
+                class="modulo-admin">
+
+                <div class="admin-bienvenida">
+
+                    <h1>
+                        👋 Bienvenido al panel
+                    </h1>
+
+                    <p>
+                        Administra TRONCO E AREPA
+                        desde este panel.
+                    </p>
+
+                </div>
+
+
+                <div class="dashboard-cards">
+
+
+                    <div
+                        class="dashboard-card"
+                        onclick="mostrarModuloPorId('productos')">
+
+                        <span>
+                            📦
+                        </span>
+
+                        <h3>
+                            Productos
+                        </h3>
+
+                        <p>
+                            Gestiona el menú
+                        </p>
+
+                    </div>
+
+
+                    <div
+                        class="dashboard-card"
+                        onclick="mostrarModuloPorId('pedidos')">
+
+                        <span>
+                            🛒
+                        </span>
+
+                        <h3>
+                            Pedidos
+                        </h3>
+
+                        <p>
+                            Gestiona las ventas
+                        </p>
+
+                    </div>
+
+
+                    <div
+                        class="dashboard-card"
+                        onclick="mostrarModuloPorId('clientes')">
+
+                        <span>
+                            👥
+                        </span>
+
+                        <h3>
+                            Clientes
+                        </h3>
+
+                        <p>
+                            Consulta clientes
+                        </p>
+
+                    </div>
+
+
+                    <div
+                        class="dashboard-card"
+                        onclick="mostrarModuloPorId('domiciliarios')">
+
+                        <span>
+                            🛵
+                        </span>
+
+                        <h3>
+                            Domiciliarios
+                        </h3>
+
+                        <p>
+                            Gestiona domicilios
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================
+                 PRODUCTOS
+            ================================== -->
+
+            <section
+                id="modulo-productos"
+                class="modulo-admin"
+                style="display:none;">
+
+
+                <div class="modulo-titulo">
+
+                    <div>
+
+                        <h1>
+                            📦 Productos
+                        </h1>
+
+                        <p>
+                            Gestiona los productos
+                            del menú.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        class="btn-nuevo"
+                        onclick="abrirFormularioProducto()">
+
+                        ➕ Nuevo producto
+
+                    </button>
+
+                </div>
+
+
+
+                <!-- FORMULARIO -->
+
+                <div
+                    id="formulario-producto"
+                    class="formulario-admin"
+                    style="display:none;">
+
+                    <h2 id="titulo-formulario">
+
+                        ➕ Nuevo producto
+
+                    </h2>
+
+
+                    <input
+                        type="hidden"
+                        id="producto-id">
+
+
+                    <div class="form-grid">
+
+
+                        <div class="campo">
+
+                            <label>
+                                Nombre
+                            </label>
+
+                            <input
+                                type="text"
+                                id="producto-nombre"
+                                placeholder="Nombre del producto">
+
+                        </div>
+
+
+                        <div class="campo">
+
+                            <label>
+                                Precio
+                            </label>
+
+                            <input
+                                type="number"
+                                id="producto-precio"
+                                placeholder="Precio">
+
+                        </div>
+
+
+                        <div
+                            class="campo campo-completo">
+
+                            <label>
+                                Descripción
+                            </label>
+
+                            <textarea
+                                id="producto-descripcion"
+                                placeholder="Descripción del producto">
+                            </textarea>
+
+                        </div>
+
+
+                        <div class="campo">
+
+                            <label>
+                                Estado
+                            </label>
+
+                            <select
+                                id="producto-estado">
+
+                                <option value="ACTIVO">
+                                    ACTIVO
+                                </option>
+
+                                <option value="AGOTADO">
+                                    AGOTADO
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="formulario-botones">
+
+                        <button
+                            class="btn-guardar"
+                            onclick="guardarProducto()">
+
+                            💾 Guardar
+
+                        </button>
+
+
+                        <button
+                            class="btn-cancelar"
+                            onclick="cerrarFormularioProducto()">
+
+                            ❌ Cancelar
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- TABLA PRODUCTOS -->
+
+                <div class="tabla-contenedor">
+
+                    <table class="tabla-admin">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    ID
+                                </th>
+
+                                <th>
+                                    Producto
+                                </th>
+
+                                <th>
+                                    Descripción
+                                </th>
+
+                                <th>
+                                    Precio
+                                </th>
+
+                                <th>
+                                    Estado
+                                </th>
+
+                                <th>
+                                    Acciones
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody
+                            id="tabla-productos-body">
+
+                            <tr>
+
+                                <td
+                                    colspan="6"
+                                    class="cargando-tabla">
+
+                                    🔄 Cargando productos...
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================
+                 PEDIDOS
+            ================================== -->
+
+            <section
+                id="modulo-pedidos"
+                class="modulo-admin"
+                style="display:none;">
+
+
+                <div class="modulo-titulo">
+
+                    <div>
+
+                        <h1>
+                            🛒 Pedidos
+                        </h1>
+
+                        <p>
+                            Administra los pedidos
+                            realizados por los clientes.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        class="btn-nuevo"
+                        onclick="cargarPedidosAdmin()">
+
+                        🔄 Actualizar
+
+                    </button>
+
+                </div>
+
+
+
+                <!-- TABLA PEDIDOS -->
+
+                <div class="tabla-contenedor">
+
+                    <table class="tabla-admin">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Pedido
+                                </th>
+
+                                <th>
+                                    Cliente
+                                </th>
+
+                                <th>
+                                    Fecha
+                                </th>
+
+                                <th>
+                                    Valor
+                                </th>
+
+                                <th>
+                                    Domiciliario
+                                </th>
+
+                                <th>
+                                    Estado
+                                </th>
+
+                                <th>
+                                    Acción
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody
+                            id="tabla-pedidos-body">
+
+                            <tr>
+
+                                <td
+                                    colspan="7"
+                                    class="cargando-tabla">
+
+                                    🔄 Cargando pedidos...
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+
+                <!-- DETALLE PEDIDO -->
+
+                <div
+                    id="detalle-pedido"
+                    class="detalle-pedido"
+                    style="display:none;">
+
+                    <div
+                        id="contenido-detalle-pedido">
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================
+                 CLIENTES
+            ================================== -->
+
+            <section
+                id="modulo-clientes"
+                class="modulo-admin"
+                style="display:none;">
+
+                <div class="modulo-titulo">
+
+                    <div>
+
+                        <h1>
+                            👥 Clientes
+                        </h1>
+
+                        <p>
+                            Consulta los clientes
+                            registrados.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="tabla-contenedor">
+
+                    <table class="tabla-admin">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    ID
+                                </th>
+
+                                <th>
+                                    Nombre
+                                </th>
+
+                                <th>
+                                    Teléfono
+                                </th>
+
+                                <th>
+                                    Dirección
+                                </th>
+
+                                <th>
+                                    Correo
+                                </th>
+
+                                <th>
+                                    Estado
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody
+                            id="tabla-clientes-body">
+
+                            <tr>
+
+                                <td
+                                    colspan="6"
+                                    class="cargando-tabla">
+
+                                    🔄 Cargando clientes...
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================
+                 DOMICILIARIOS
+            ================================== -->
+
+            <section
+                id="modulo-domiciliarios"
+                class="modulo-admin"
+                style="display:none;">
+
+                <h1>
+                    🛵 Domiciliarios
+                </h1>
+
+                <p>
+                    Aquí administraremos
+                    los domiciliarios.
+                </p>
+
+            </section>
+
+
+
+            <!-- =================================
+                 INVENTARIO
+            ================================== -->
+
+            <section
+                id="modulo-inventario"
+                class="modulo-admin"
+                style="display:none;">
+
+                <h1>
+                    📊 Inventario
+                </h1>
+
+                <p>
+                    Aquí administraremos
+                    el inventario.
+                </p>
+
+            </section>
+
+
+
+            <!-- =================================
+                 PROVEEDORES
+            ================================== -->
+
+            <section
+                id="modulo-proveedores"
+                class="modulo-admin"
+                style="display:none;">
+
+                <h1>
+                    🚚 Proveedores
+                </h1>
+
+                <p>
+                    Aquí administraremos
+                    los proveedores.
+                </p>
+
+            </section>
+
+
+
+            <!-- =================================
+                 COMPRAS
+            ================================== -->
+
+            <section
+                id="modulo-compras"
+                class="modulo-admin"
+                style="display:none;">
+
+                <h1>
+                    🛍️ Compras
+                </h1>
+
+                <p>
+                    Aquí administraremos
+                    las compras.
+                </p>
+
+            </section>
+
+
+        </main>
+
+    </div>
+
+
+    <script src="js/admin.js"></script>
+
+</body>
+
+</html>

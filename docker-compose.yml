@@ -1,0 +1,50 @@
+services:
+  db:
+    image: mysql:8.4
+    container_name: tronco-arepa-db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: proyecto
+      MYSQL_USER: troncoarepa
+      MYSQL_PASSWORD: troncoarepa
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost -uroot -proot"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  app:
+    build:
+      context: ./tronco-arepa-backend
+      dockerfile: Dockerfile
+    container_name: tronco-arepa-api
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/proyecto?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_USERNAME: troncoarepa
+      SPRING_DATASOURCE_PASSWORD: troncoarepa
+      PORT: 8081
+    ports:
+      - "8081:8081"
+
+  frontend:
+    build:
+      context: ./tronco-arepa-frontend
+      dockerfile: Dockerfile
+    container_name: tronco-arepa-frontend
+    restart: unless-stopped
+    depends_on:
+      - app
+    ports:
+      - "8080:80"
+
+volumes:
+  mysql_data:

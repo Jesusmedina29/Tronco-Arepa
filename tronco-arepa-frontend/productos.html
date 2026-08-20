@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Menú | TRONCO E AREPA</title>
+
+    <link rel="stylesheet" href="css/cliente.css">
+
+</head>
+
+<body>
+
+
+    <!-- =========================================
+         NAVBAR
+    ========================================== -->
+
+    <header class="navbar">
+
+        <div class="logo">
+
+            <span>🍔</span>
+
+            TRONCO <strong>E AREPA</strong>
+
+        </div>
+
+
+        <nav>
+
+            <a href="index.html">
+                Inicio
+            </a>
+
+            <a href="productos.html" class="activo">
+                Menú
+            </a>
+
+        </nav>
+
+
+        <div class="carrito-nav">
+
+            🛒
+
+            <span id="contador-carrito">
+                0
+            </span>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =========================================
+         ENCABEZADO DEL MENÚ
+    ========================================== -->
+
+    <section class="menu-header">
+
+        <span>
+            🍔 TRONCO E AREPA
+        </span>
+
+        <h1>
+            NUESTRO MENÚ
+        </h1>
+
+        <p>
+            Elige tus favoritos y disfruta del mejor sabor.
+        </p>
+
+    </section>
+
+
+
+    <!-- =========================================
+         PRODUCTOS
+    ========================================== -->
+
+    <main class="menu">
+
+        <div
+            id="productos-container"
+            class="productos-container">
+
+            <div class="cargando">
+
+                <div class="spinner"></div>
+
+                <p>
+                    Cargando menú...
+                </p>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+
+    <!-- =========================================
+         CARRITO
+    ========================================== -->
+
+    <div
+        id="carrito-panel"
+        class="carrito-panel">
+
+
+        <div class="carrito-header">
+
+            <h2>
+                🛒 Tu pedido
+            </h2>
+
+
+            <button
+                onclick="cerrarCarrito()"
+                class="cerrar">
+
+                ×
+
+            </button>
+
+        </div>
+
+
+
+        <!-- PRODUCTOS DEL CARRITO -->
+
+        <div id="carrito-items">
+
+            <p class="carrito-vacio">
+
+                Tu carrito está vacío.
+
+            </p>
+
+        </div>
+
+
+
+        <!-- TOTAL -->
+
+        <div class="carrito-total">
+
+            <span>
+                Total
+            </span>
+
+            <strong id="total-carrito">
+                $0
+            </strong>
+
+        </div>
+
+
+
+        <!-- FINALIZAR PEDIDO -->
+
+        <button
+            class="btn-finalizar"
+            onclick="finalizarPedido()">
+
+            FINALIZAR PEDIDO
+
+        </button>
+
+
+    </div>
+
+
+
+    <!-- =========================================
+         BOTÓN FLOTANTE DEL CARRITO
+    ========================================== -->
+
+    <button
+        class="carrito-flotante"
+        onclick="abrirCarrito()">
+
+        🛒
+
+        <span id="contador-flotante">
+            0
+        </span>
+
+    </button>
+
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+
+    <script src="js/productos.js"></script>
+
+
+</body>
+
+</html>

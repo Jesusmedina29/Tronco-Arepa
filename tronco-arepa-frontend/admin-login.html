@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Administración | TRONCO E AREPA</title>
+
+    <link
+        rel="stylesheet"
+        href="css/admin.css">
+
+</head>
+
+<body class="admin-login-body">
+
+    <div class="admin-login-container">
+
+        <div class="admin-login-box">
+
+            <div class="admin-logo">
+                🔐
+            </div>
+
+            <h1>
+                TRONCO E AREPA
+            </h1>
+
+            <h2>
+                Panel de Administrador
+            </h2>
+
+            <p class="admin-subtitulo">
+                Acceso exclusivo para administración
+            </p>
+
+
+            <form id="adminLoginForm">
+
+                <div class="campo">
+
+                    <label for="correo">
+                        Correo electrónico
+                    </label>
+
+                    <input
+                        type="email"
+                        id="correo"
+                        placeholder="admin@troncoarepa.com"
+                        required>
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label for="password">
+                        Contraseña
+                    </label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Contraseña"
+                        required>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="btn-admin-login">
+
+                    🔐 INGRESAR AL PANEL
+
+                </button>
+
+            </form>
+
+
+            <div
+                id="mensaje-admin"
+                class="mensaje-admin">
+            </div>
+
+
+            <a
+                href="index.html"
+                class="volver">
+
+                ← Volver al inicio
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <script src="js/admin-login.js"></script>
+
+</body>
+
+</html>
