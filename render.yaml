@@ -8,8 +8,8 @@ services:
     dockerContext: ./tronco-arepa-backend
     envVars:
       - key: SPRING_DATASOURCE_URL
-        sync: false
+        sync: true
       - key: SPRING_DATASOURCE_USERNAME
-        sync: false
+        sync: true
       - key: SPRING_DATASOURCE_PASSWORD
-        sync: false
+        sync: true
