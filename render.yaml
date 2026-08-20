@@ -3,14 +3,14 @@ services:
     name: tronco-arepa-backend
     runtime: docker
     plan: free
-    rootDir: tronco-arepa-backend
+    rootDir: .
     dockerfilePath: Dockerfile
     envVars:
       - key: PORT
         value: 10000
       - key: SPRING_DATASOURCE_URL
-        sync: true
+        sync: false
       - key: SPRING_DATASOURCE_USERNAME
-        sync: true
+        sync: false
       - key: SPRING_DATASOURCE_PASSWORD
-        sync: true
+        sync: false
