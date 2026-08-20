@@ -3,6 +3,7 @@ services:
     name: tronco-arepa-backend
     runtime: docker
     plan: free
+    rootDir: .
     dockerfilePath: ./tronco-arepa-backend/Dockerfile
     dockerContext: ./tronco-arepa-backend
     envVars:
